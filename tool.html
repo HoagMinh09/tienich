@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANH SÁCH TOOL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            background-color: rgba(176, 224, 230);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 16px;
+            color: white;
+            background-color: #4c56af;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25),
+                        2px 2px 2px rgba(0, 0, 0, 0.25),
+                        inset 2px 2px 4px rgba(255, 255, 255, 0.5),
+                        inset 2px 2px 6px rgba(255, 255, 255, 0.2),
+                        inset -1px -1px 6px rgba(218, 218, 218, 0.75);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .button:hover {
+            background-color: #3b449c;
+            transform: scale(1.1);
+        }
+
+        .profile-card {
+            background-color: rgb(240, 230, 140);
+            width: 350px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-card .img-area {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .profile-card .img-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-card h2 {
+            font-size: 22px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .profile-card h2 img {
+            vertical-align: middle;
+        }
+
+        .profile-card .about {
+            font-size: 16px;
+            color: #444;
+            margin-top: 5px;
+        }
+
+        .snowflake {
+            color: #fff;
+            font-size: 1em;
+            font-family: Arial, sans-serif;
+            text-shadow: 0 0 5px #000;
+            position: fixed;
+            top: -10%;
+            z-index: 9999;
+            cursor: default;
+            animation: snowflakes-fall 10s linear infinite, snowflakes-shake 3s ease-in-out infinite;
+        }
+
+        @keyframes snowflakes-fall {
+            0% { top: -10%; }
+            100% { top: 100%; }
+        }
+
+        @keyframes snowflakes-shake {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(80px); }
+        }
+
+        .music-player {
+            margin-top: 20px;
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .music-player h3 {
+            margin: 0 0 10px 0;
+        }
+
+        .song-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .song-list li {
+            margin: 10px 0;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 5px;
+            background-color: #ddd;
+            transition: background-color 0.3s;
+        }
+
+        .song-list li:hover {
+            background-color: #ccc;
+        }
+
+        .current-song {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        audio {
+            display: none;
+        }
+
+        #play-button {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4c56af;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #play-button:hover {
+            background-color: #3b449c;
+        }
+    </style>
+</head>
+<body>
+    <audio id="audio" autoplay loop>
+        <source id="audio-source" src="https://www.thanhdieu.com/files/sample-music.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ nhạc.
+    </audio>
+
+    <button id="play-button">Phát Nhạc</button>
+
+    <div class="profile-card">
+        <div class="img-area">
+            <img src="https://i.imgur.com/rYkgGD3.png" alt="Hoàng Minh">
+        </div>
+        <h2>Hoàng Minh🇻🇳 <img height="17" width="17" src="https://i.imgur.com/Fcupuom.gif"/></h2>
+        <div class="about">Cảm ơn bạn đã ghé thăm!</div>
+    </div>
+
+    <h1>Chọn Tool Bạn Muốn Truy Cập</h1>
+    <a href="https://www.google.com" class="button" target="_blank">Google</a>
+    <a href="https://www.facebook.com" class="button" target="_blank">Facebook</a>
+    <a href="https://www.youtube.com" class="button" target="_blank">YouTube</a>
+    <a href="https://www.tiktok.com" class="button" target="_blank">TikTok</a>
+    <a href="https://www.twitter.com" class="button" target="_blank">Twitter</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audio = document.getElementById('audio');
+            const playButton = document.getElementById('play-button');
+
+            // Cố gắng tự động phát nhạc
+            audio.play().catch(() => {
+                playButton.style.display = 'block'; // Hiển thị nút nếu bị chặn
+            });
+
+            // Sự kiện nhấn nút để phát nhạc
+            playButton.addEventListener('click', function () {
+                audio.play().then(() => {
+                    playButton.style.display = 'none'; // Ẩn nút khi nhạc bắt đầu
+                }).catch(error => {
+                    console.error("Không thể phát nhạc:", error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Lấy Key</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            background-color: rgba(176, 224, 230);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 30px;
+            background-color: rgb(240, 230, 140);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .button {
+            display: inline-block;
+            width: 180px;
+            padding: 12px;
+            margin: 10px;
+            font-size: 18px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+        .btn-1 { background: #3498db; }
+        .btn-2 { background: #2ecc71; }
+        .btn-3 { background: #e74c3c; }
+        .btn-4 { background: #f39c12; }
+        .btn-5 { background: #9b59b6; }
+        .button:hover {
+            opacity: 0.8;
+        }
+        .key-container {
+            margin-top: 20px;
+            padding: 10px;
+        }
+        .key-button {
+            background-color: #4c56af;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .social-links a {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #333;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2><b>Hoàng Minh 🇻🇳</b></h2>
+        <img src="https://i.imgur.com/rYkgGD3.png" alt="Avatar" width="100">
+        <p><b>Website Lấy Key Free</b></p>
+
+        <div class="key-container">
+            <h3>CLICK VÀO ĐÂY ĐỂ SAO CHÉP KEY</h3>
+            <button class="key-button" onclick="copyToClipboard('#keytool')">
+                <span id="keytool">BẠN CHƯA LẤY KEY</span>
+            </button>
+        </div>
+
+        <h3>Chọn một trong các link bên dưới</h3>
+        <a href="https://example.com/link1" class="button btn-1">Link 1</a>
+        <a href="https://example.com/link2" class="button btn-2">Link 2</a>
+        <a href="https://example.com/link3" class="button btn-3">Link 3</a>
+        <a href="https://example.com/link4" class="button btn-4">Link 4</a>
+        <a href="https://example.com/link5" class="button btn-5">Link 5</a>
+
+        <div class="social-links">
+            <p><b>Liên hệ:</b></p>
+            <a href="https://fb.com/mh0zz">Facebook</a>
+            <a href="https://www.tiktok.com/@mh0zz">TikTok</a>
+            <a href="https://t.me/vcl_mh0zz">Telegram</a>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(element) {
+            var temp = document.createElement("input");
+            document.body.appendChild(temp);
+            temp.value = document.querySelector(element).innerText;
+            temp.select();
+            document.execCommand("copy");
+            alert('Đã sao chép: ' + temp.value);
+            document.body.removeChild(temp);
+        }
+
+        function GetURLParameter(sParam) {
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            for (var i = 0; i < sURLVariables.length; i++) {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam) {
+                    return sParameterName[1];
+                }
+            }
+        }
+
+        var key = GetURLParameter('key');
+        if (key) {
+            document.getElementById("keytool").innerText = key;
+        }
+    </script>
+
+</body>
+</html>
